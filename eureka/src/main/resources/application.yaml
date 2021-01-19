@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: readingisgood-eureka
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true

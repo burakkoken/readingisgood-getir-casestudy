@@ -1,0 +1,101 @@
+version: "3.7"
+
+services:
+  eureka-server:
+    image: readingisgood-eureka
+    hostname: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      local-network:
+    restart: on-failure
+
+  gateway:
+    image: readingisgood-gateway
+    hostname: gateway-server
+    ports:
+      - "8762:8762"
+    networks:
+      local-network:
+    environment:
+      - EUREKA_SERVER=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    restart: on-failure
+
+  order-microservice:
+    image: readingisgood-order-microservice
+    hostname: order-service
+    ports:
+      - "8081:8087"
+    networks:
+      local-network:
+    environment:
+      - EUREKA_SERVER=http://eureka-server:8761/eureka
+      - SPRING_KAFKA_BOOTSTRAPSERVERS= kafka:29092
+    depends_on:
+      - eureka-server
+      - kafka
+    restart: on-failure
+
+  stock-microservice:
+    image: readingisgood-stock-microservice
+    hostname: stock-service
+    ports:
+      - "8082:8088"
+    networks:
+      local-network:
+    environment:
+      - EUREKA_SERVER=http://eureka-server:8761/eureka
+      - SPRING_KAFKA_BOOTSTRAPSERVERS= kafka:29092
+    depends_on:
+      - eureka-server
+      - kafka
+    restart: on-failure
+
+  auth-microservice:
+    image: readingisgood-auth-microservice
+    hostname: auth-service
+    ports:
+      - "8083:8089"
+    networks:
+      local-network:
+    environment:
+      - EUREKA_SERVER=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    restart: on-failure
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      local-network:
+    restart: on-failure
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CREATE_TOPICS: "OrderEvents:1:1,StockEvents:1:1:compact"
+    networks:
+        local-network:
+    restart: on-failure
+
+networks:
+  local-network:

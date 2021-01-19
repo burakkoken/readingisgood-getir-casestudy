@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "dde93249-ffd6-40d2-8966-79183d83f435",
+		"name": "Getir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Successfully",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"test-getir\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-auth/auth/register",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-auth",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Already Registered User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"test1\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-auth/auth/register",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-auth",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Without Username",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-auth/auth/register",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-auth",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Success Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"test1\",\r\n    \"password\" : \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-auth/auth/login",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-auth",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad credentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"test1\",\r\n    \"password\" : \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-auth/auth/login",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-auth",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsIlVzZXJJZCI6MSwiaXNzIjoiUmVhZGluZ0lzR29vZCIsImV4cCI6MTYxMTA5OTA2OCwiaWF0IjoxNjExMDEyNjY4fQ.1tM8BMvg2ED8b5l0qjJbJIiATmYY3eOQCkT-Od6-Mrw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-stock/stock/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-stock",
+						"stock",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stock All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsIlVzZXJJZCI6MSwiaXNzIjoiUmVhZGluZ0lzR29vZCIsImV4cCI6MTYxMTA5OTA2OCwiaWF0IjoxNjExMDEyNjY4fQ.1tM8BMvg2ED8b5l0qjJbJIiATmYY3eOQCkT-Od6-Mrw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-stock/stock",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-stock",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stock Without Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-stock/stock",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-stock",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Book Having No Quantity",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsIlVzZXJJZCI6MSwiaXNzIjoiUmVhZGluZ0lzR29vZCIsImV4cCI6MTYxMTA5OTA2OCwiaWF0IjoxNjExMDEyNjY4fQ.1tM8BMvg2ED8b5l0qjJbJIiATmYY3eOQCkT-Od6-Mrw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\" : 4,\r\n    \"quantity\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-order/order",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-order",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsIlVzZXJJZCI6MSwiaXNzIjoiUmVhZGluZ0lzR29vZCIsImV4cCI6MTYxMTA5OTA2OCwiaWF0IjoxNjExMDEyNjY4fQ.1tM8BMvg2ED8b5l0qjJbJIiATmYY3eOQCkT-Od6-Mrw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\" : 2,\r\n    \"quantity\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8762/api-order/order",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8762",
+					"path": [
+						"api-order",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

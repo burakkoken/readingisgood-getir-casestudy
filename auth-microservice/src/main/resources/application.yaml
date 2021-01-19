@@ -1,0 +1,24 @@
+server:
+  port: ${AUTH_MICROSERVICE_PORT:8089}
+
+spring:
+  application:
+    name: readingisgood-auth-microservice
+  jackson:
+    serialization:
+      indent_output: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://192.168.99.100:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+  instance:
+    preferIpAddress: true
+
+logging:
+  level:
+    org.readingisgood: DEBUG

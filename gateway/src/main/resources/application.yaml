@@ -1,0 +1,49 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://192.168.99.100:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: true
+
+zuul:
+
+  ignored-services: '*'
+  routes:
+    auth-service:
+      path: /api-auth/**
+      service-id: readingisgood-auth-microservice
+      sensitiveHeaders:
+    order-service:
+      path: /api-order/**
+      service-id: readingisgood-order-microservice
+      sensitiveHeaders:
+    stock-service:
+      path: /api-stock/**
+      service-id: readingisgood-stock-microservice
+      sensitiveHeaders:
+  host:
+    socket-timeout-millis: 100000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    connect-timeout-millis: 100000
+
+  strip-prefix: true
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
+
+
+logging:
+  level:
+    org.readingisgood: DEBUG
+
