@@ -1,5 +1,6 @@
 # ReadingIsGood
 
+## Endpoints
 It consists of five applications:
 * **Gateway(Zuul)**: Zuul Server is a gateway application that handles all the requests and does the dynamic routing of microservice application. It authenticates the requests.
 * **Discovery(Eureka)**: Eureka Server is an application that holds the information about all the service applications.
@@ -43,13 +44,20 @@ It consists of five applications:
  
 In case of a failure scenario, the Stock Service produces and StockEvent with status **REVERSE_FAILED**, and the OrderService updates the order's status as **CANCELED**.
 
-**Note:** Swagger documentations are available under the Zuul address.
+## Swagger
+Swagger documentations are available under the Zuul address.
 
 ![readingisgood-authapi](https://user-images.githubusercontent.com/5354910/104977158-f10b7000-5a0f-11eb-9c0b-b88f3bd1526b.PNG)
 ![readingisgood-orderapi](https://user-images.githubusercontent.com/5354910/104977189-fff22280-5a0f-11eb-93b7-b650456eb4ae.PNG)
 ![readingisgood-stockapi](https://user-images.githubusercontent.com/5354910/104977209-0a142100-5a10-11eb-84d9-6c53c5461f6f.PNG)
 
+## Success and Error Responses
+![image](https://user-images.githubusercontent.com/5354910/104977828-8a875180-5a11-11eb-83c6-a142569667c9.png)
+![error](https://user-images.githubusercontent.com/5354910/104977734-3e3c1180-5a11-11eb-8094-efec8ea906c9.PNG)
+![image](https://user-images.githubusercontent.com/5354910/104977908-b9052c80-5a11-11eb-9ed9-b3b7bcfab114.png)
 
-**Note:** You can find the Postman export in Postman folder.
+## Postman
+You can find the Postman export in Postman folder.
 
-**Note:** I couldn't upload docker images to DockerHub as it takes a while.
+## Dockerize
+I prepared Docker files and compose file. But I couldn't upload docker images to DockerHub as it takes a while.
